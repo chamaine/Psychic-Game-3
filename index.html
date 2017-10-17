@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-us>
+<head>
+
+	<meta charset="UTF-8">
+	<title>Guess the Number Idiot</title>
+
+<!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+</head>
+<body>
+
+	<div class ="container">
+	
+	<div class="jumbotron">
+	<h1>The Psychic Game</h1>
+	<p>Guess the Letter I'm thinking Of…</p>
+	<button type = "button" class = "btn btn-default btn-sm">
+   		<span class = "glyphicon glyphicon-user"></span>Player One
+		</button>
+		<p>Wins: <span class="number-of-wins"></span></p> 
+		<p>Losses: <span class="number-of-losses"></span></p>
+		<p>Guesses Left: <span id="guessesLeft"></span></p>
+		<h2>Guesses So Far: <span id="letterPicked"><strong></strong></span></h2>
+	</div>
+	</div>
+
+
+<script type="text/javascript">
+//Should I  use the keyCode instead? 
+//REMINDERS!!! 
+//STRING EXAMPLE: 'THIS IS A STRING IDIOT'; <---PARENTHESIS AND ENDS WITH SEMICOLON
+//BOOLEANS: true; or false;  <---evaluate different statements
+//UNDEFINED ERRORS: example - define statement; = what???     the letter; 'a';
+															// console.log 
+//OBJECT - have to have a key and a value: EXAMPLE: name='letter' {  };  curly bracks {};. For instance they key to my answer are the letters stored in letters below. (change word to answerKey)															
+
+//establish letters in the game
+	var letters =["w","a","s","h","i","n","g"];
+	var letterPicked = "";
+	function newLetter(){
+		letterPicked = letters[Math.floor(Math.random() * letters.length)];
+	}
+	newLetter()
+	console.log(letterPicked)
+
+
+//variables example user, letters that need to guess
+	// var gameUser 
+	
+
+//variables establishing wins vs losses and keep track of each 
+	var resetButton;
+	var wins = document.querySelector(".number-of-wins");
+	var losses = document.querySelector(".number-of-losses");
+	var guessesSoFar = document.querySelector("#letterPicked");
+	var guessesLeft = document.querySelector("#guessesLeft");
+	guessesLeft.innerHTML = 10;
+	console.log("================", guessesSoFar.innerHTML)
+	wins.innerHTML = 0
+	losses.innerHTML = 0
+
+//first function using the onkeyup command...with event.key
+document.onkeyup = function(event){
+	var keyPressed = event.key
+
+	console.log("things",letterPicked)
+	// console.log("====",guessesSoFar, letterPicked);
+
+// if (letters === 'w,a,s,h,i,n,g') {
+//   alert('Win!');
+// } else if (letters === 'b') {
+//   alert('Losss!');
+// };
+	if(letters.indexOf(keyPressed) !== -1){
+		guessesSoFar.innerHTML += " " + event.key;
+		if (keyPressed == letterPicked){
+			alert("You win!");
+			wins.innerHTML++;
+			nextGame();
+		} else {
+			var currentGuessNumber = parseInt(guessesLeft.innerHTML);
+			currentGuessNumber -= 1;
+			guessesLeft.innerHTML = currentGuessNumber;
+			if (guessesLeft.innerHTML == 0){
+				alert("You lose!");
+				losses.innerHTML++; 
+			}
+		}		
+	}
+} 
+//function nextGame(){
+	//reset the guesses so far in html back to empty or none. Create a new letter picked (turn into a function using math.random to return a new letter), Has to get called when game intially reloads and 
+	//call newLetter functions
+}
+ // Let's start by grabbing a reference to the <span> below.
+// Next, we give JavaScript a function to execute when onkeyup event fires.
+// document.onkeyup = function(event) {
+// letterPicked = event.key;
+// console.log(letterPicked);
+// }
+
+//show this in the code	
+	// letters[0,1,2,4,5,6];
+      // console.log(letters);
+
+      // console.log(letters[0]);
+      // console.log(letters[1]);
+      // console.log(letters[2]);
+      // console.log(letters[3]);
+      // console.log(letters[4]);
+      // console.log(letters[5]);
+      // console.log(letters[6]);
+
+
+
+
+// function checkGuess() {
+//   var gameUser = letter(guessField.value);
+//   if (guessesLeft === 10) {
+//     guessesSofar.textContent = guessessofar() ;
+//   }
+  
+
+
+
+
+// Set parameters of the game here...
+
+//Wins
+
+//Losses
+
+//Guesses Left
+
+
+//Show letters the person inputs//
+
+//-----------
+//1. create a string of letters. 2. user guesses letter.  3. if they guess right, you win pops us and the number of wins show. 4. if they guess wrong...the number of losses show. maximum tries is 10. 
+
+
+
+//HTML HERE - input fields
+
+
+
+
+//How many guesses does the person get before reset//
+
+//Put guesses so far
+
+//document.write()
+
+//Reset game//
+
+
+
+     
+
+
+
+
+</script>
+</body>
+</html>
